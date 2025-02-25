@@ -14,10 +14,10 @@
 
 #define I2C_PORT           0x01
 
-#define E_OXYGEN_ADDRESS_0 0x70
-#define E_OXYGEN_ADDRESS_1 0x71
-#define E_OXYGEN_ADDRESS_2 0x72
-#define E_OXYGEN_ADDRESS_3 0x73
+#define E_OXYGEN_ADDRESS_0 0x70 /* A0=0, A1=0 */
+#define E_OXYGEN_ADDRESS_1 0x71 /* A0=1, A1=0 */
+#define E_OXYGEN_ADDRESS_2 0x72 /* A0=0, A1=1 */
+#define E_OXYGEN_ADDRESS_3 0x73 /* A0=1, A1=1 */
 
 #define OXYGEN_DATA        0x10
 #define CALIBRATION_STATE  0x13
