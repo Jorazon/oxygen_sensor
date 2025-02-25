@@ -3,6 +3,6 @@ project(EOxygenSensor)
 
 include_directories(./include)
 
-add_executable(${PROJECT_NAME} main.c ${PROJECT_NAME}.c)
+add_executable(${PROJECT_NAME} main.c ${PROJECT_NAME}.c delay.c)
 
 target_link_libraries(${PROJECT_NAME} i2c)

@@ -8,11 +8,11 @@
 #include <sys/ioctl.h>
 
 #include "EOxygenSensor.h"
+#include "delay.h"
 
 bool shouldexit = false;
 
 void handle(int signum);
-extern void delay(int);
 
 int file;
 

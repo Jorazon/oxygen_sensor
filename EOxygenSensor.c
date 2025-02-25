@@ -7,19 +7,7 @@
  */
 
 #include "EOxygenSensor.h"
-
-#include <stdio.h>
-#include <unistd.h>
-
-/* milliseconds to microseconds factor */
-#define MS_2_US 1000ll
-
-/**
- * @brief Millisecond delay
- */
-void delay(int ms) {
-    usleep(ms * MS_2_US);
-}
+#include "delay.h"
 
 /**
  * @brief Get oxygen concentration unit vol
