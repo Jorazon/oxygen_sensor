@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 project(EOxygenSensor)
-file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/.gitignore "*")
+file(WRITE ${CMAKE_BINARY_DIR}/.gitignore "*")
 
 include_directories(./include)
 
