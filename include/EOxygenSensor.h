@@ -11,8 +11,6 @@
 
 #include <stdint.h>
 #include <stdbool.h>
-#include <linux/i2c-dev.h>
-#include <i2c/smbus.h> /* install libi2c-dev*/
 
 #define I2C_PORT           0x01
 

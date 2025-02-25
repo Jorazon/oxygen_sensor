@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <fcntl.h>
 #include <sys/ioctl.h>
+#include <linux/i2c-dev.h>
 
 #include "EOxygenSensor.h"
 #include "delay.h"
