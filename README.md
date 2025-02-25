@@ -19,7 +19,7 @@ mkdir build
 cd build
 cmake ..
 make
-./EOxygenSensor
+./i2coxygen
 ```
 
 ---

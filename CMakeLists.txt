@@ -3,7 +3,9 @@ project(EOxygenSensor)
 file(WRITE ${CMAKE_BINARY_DIR}/.gitignore "*")
 
 include_directories(./include)
+add_subdirectory(src)
 
-add_executable(${PROJECT_NAME} main.c ${PROJECT_NAME}.c delay.c)
+set(EXE_NAME i2coxygen)
+add_executable(${EXE_NAME} main.c)
 
-target_link_libraries(${PROJECT_NAME} i2c)
+target_link_libraries(${EXE_NAME} delay EOxygenSensor)
