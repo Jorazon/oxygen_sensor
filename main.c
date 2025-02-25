@@ -17,7 +17,7 @@ void handle(int signum);
 
 int file;
 
-int main(void) {
+int main(int argc, char *argv[]) {
     /* set signal handler */
     struct sigaction action;
     memset(&action, 0, sizeof(action));
@@ -43,13 +43,15 @@ int main(void) {
     }
     
     /* calibrate sensor */
-    printf("O2 sensor calibrating...\r");
-    fflush(stdout);
-    if (!calibration_20_9(file)) {
-        fprintf(stderr, "O2 sensor calibration failed! %s\n", strerror(errno));
-        exit(1);
-    } else {
-        printf("O2 sensor calibrated for an ambient O2 concentration of 20.90%% Vol\n");
+    if (argc > 1 && strcmp(argv[1], "-c")) {
+        printf("O2 sensor calibrating...\r");
+        fflush(stdout);
+        if (!calibration_20_9(file)) {
+            fprintf(stderr, "O2 sensor calibration failed! %s\n", strerror(errno));
+            exit(1);
+        } else {
+            printf("O2 sensor calibrated for an ambient O2 concentration of 20.90%% Vol\n");
+        }
     }
     
     /* read and print concentration */
