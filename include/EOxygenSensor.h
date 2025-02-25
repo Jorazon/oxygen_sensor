@@ -36,7 +36,7 @@ bool    clearCalibration(int fd);
 
 void    readKB(int fd);
 
-void    readRAW(int fd);
+void    dumpROM(int fd);
 
 int     readData (int fd, uint8_t reg, uint8_t *data, uint8_t len);
 int     writeData(int fd, uint8_t reg, uint8_t *data, uint8_t len);

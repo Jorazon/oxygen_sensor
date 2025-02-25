@@ -89,8 +89,24 @@ void readKB(int fd) {
     printf("k: %f b: %f k0 %f\n",
         (float)buf[0] + (float)buf[1]/100.0f, /* slope, set to default on clear */
         (float)buf[2] + (float)buf[3]/100.0f, /* bias, set to 0 on clear */
-        (float)buf[4] + (float)buf[5]/100.0f /* factory default slope (1.66) */
+        (float)buf[4] + (float)buf[5]/100.0f /* factory default slope */
     );
+}
+
+void dumpROM(int fd) {
+    size_t rom_size = 40, index, i, j;
+    uint8_t buf;
+    printf("      0   1   2   3   4   5   6   7   8   9   A   B   C   D   E   F\n");
+    for (i = 0; i < rom_size; i+=16) {
+        printf("%02x: ", i);
+        for (j = 0; j < 16; j++) {
+            index = i + j;
+            if (index >= rom_size) break;
+            readData(fd, index, &buf, 1);
+            printf("%3d ", buf);
+        }
+        printf("\n");
+    }
 }
 
 /**
