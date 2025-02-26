@@ -13,8 +13,6 @@
 
 #define ESC "\033"
 
-bool shouldexit = false;
-
 void handle(int signum);
 
 int file;
@@ -58,10 +56,10 @@ int main(int argc, char *argv[]) {
     
     /* read and print concentration */
     printf(ESC"7"); /* save cursor position */
-    while (!shouldexit) {
+    for(;;) {
         printf(ESC"8"); /* restore cursor position */
         dumpROM(file);
-        printf("O2: %6.2f%% Vol"ESC"[0K\r", readOxygenConcentration(file));
+        printf("\rO2: %6.2f%% Vol"ESC"[0K", readOxygenConcentration(file));
         fflush(stdout);
         delay(500);
     }
@@ -74,5 +72,6 @@ int main(int argc, char *argv[]) {
 /* candle termination signals */
 void handle(int signum) {
     (void)signum;
-    shouldexit = true;
+    printf(ESC"[?25h\n"); /* show cursor */
+    exit(0);
 }
