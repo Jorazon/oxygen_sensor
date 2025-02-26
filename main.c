@@ -58,7 +58,7 @@ int main(int argc, char *argv[]) {
     printf(ESC"7"); /* save cursor position */
     for(;;) {
         printf(ESC"8"); /* restore cursor position */
-        dumpROM(file);
+        //dumpROM(file);
         printf("\rO2: %6.2f%% Vol"ESC"[0K", readOxygenConcentration(file));
         fflush(stdout);
         delay(500);
