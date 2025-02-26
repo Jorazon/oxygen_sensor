@@ -11,6 +11,8 @@
 #include "EOxygenSensor.h"
 #include "delay.h"
 
+#define ESC "\033"
+
 bool shouldexit = false;
 
 void handle(int signum);
@@ -25,7 +27,7 @@ int main(int argc, char *argv[]) {
     sigaction(SIGTERM, &action, NULL);
     sigaction(SIGINT, &action, NULL);
     
-    printf("\033[?25l"); /* hide cursor */
+    printf(ESC"[?25l"); /* hide cursor */
     
     /* open I2C file */
     char filename[20];
@@ -55,13 +57,16 @@ int main(int argc, char *argv[]) {
     }
     
     /* read and print concentration */
+    printf(ESC"7"); /* save cursor position */
     while (!shouldexit) {
-        printf("O2: %6.2f%% Vol\033[0K\r", readOxygenConcentration(file));
+        printf(ESC"8"); /* restore cursor position */
+        dumpROM(file);
+        printf("O2: %6.2f%% Vol"ESC"[0K\r", readOxygenConcentration(file));
         fflush(stdout);
         delay(500);
     }
     
-    printf("\033[?25h\n"); /* show cursor */
+    printf(ESC"[?25h\n"); /* show cursor */
     
     return 0;
 }
