@@ -6,6 +6,7 @@ include_directories(./include)
 add_subdirectory(src)
 
 set(EXE_NAME i2coxygen)
+add_compile_options(-Wall -Wextra -Wpedantic -Wint-conversion)
 add_executable(${EXE_NAME} main.c)
 
 target_link_libraries(${EXE_NAME} delay EOxygenSensor)
