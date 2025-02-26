@@ -68,5 +68,6 @@ int main(int argc, char *argv[]) {
 
 /* candle termination signals */
 void handle(int signum) {
+    (void)signum;
     shouldexit = true;
 }
